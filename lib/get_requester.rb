@@ -10,14 +10,14 @@ class GetRequester
     @url = url
   end
   
-  def self.get_response_body
-    uri - URI.parse(url)
+  def get_response_body
+    uri - URI.parse(@url)
     response = Net::HTTP.get_response(uri)
     response.body
   end
   
-  def self.parse_json
-    data = JSON.parse(self.get_response_body)
+  def parse_json
+    data = JSON.parse(get_response_body)
     data
   end
   
